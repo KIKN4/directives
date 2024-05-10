@@ -1,0 +1,21 @@
+<app-header [title]="headerTitle"></app-header>
+<div class="container">
+  <h1 *ngIf="headingVisible" appHighlight highlightColor="blue">
+    hello world!
+  </h1>
+  <h2 appHighlight highlightColor="green">another Title</h2>
+  <button (click)="headingVisible = !headingVisible">toggle heading</button>
+  <ul>
+    <li [ngClass]="{ special: isSpecial, interesting: isInteresting }">one</li>
+    <li>two</li>
+    <li>three</li>
+  </ul>
+  <button (click)="isSpecial = !isSpecial">isSpecial</button>
+  <input type="text" id="example-ngModel" [(ngModel)]="title" />
+
+  <app-shopping-item
+    *ngFor="let item of shoppingList; trackBy: listTrackBy"
+    [item]="item"
+  ></app-shopping-item>
+  <button (click)="onDeleteFromList(item.id)">delete</button>
+</div>
